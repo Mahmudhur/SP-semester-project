@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+int main() {
+    int choice;
+
+    int codes[] = {101, 102, 103};
+    char services[][40] = {
+        "Library Card Status",
+        "Lab Access Permission",
+        "Medical Booth Token"
+    };
+    int service_count = sizeof(codes) / sizeof(codes[0]);
+
+    do {
+        printf("=== RoboDesk Campus Service Kiosk ===\n");
+        printf("1. Check Library Card Status\n");
+        printf("2. Check Lab Access Permission\n");
+        printf("3. Check Medical Booth Token\n");
+        printf("4. Search Service by Service Code\n");
+        printf("5. Exit\n");
+        printf("Enter Choice: ");
+        fflush(stdout);
+        
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter a number.\n\n");
+            while (getchar() != '\n');
+            continue;
+        }
+        switch (choice) {
+            case 1:
+                printf("Service Available: %s\n", services[0]);
+                break;
+            case 2:
+                printf("Service Available: %s\n", services[1]);
+                break;
+            case 3:
+                printf("Service Available: %s\n", services[2]);
+                break;
+            case 4: {
+                int search_code;
+                int is_found = 0;
+                printf("Enter Service Code: ");
+                fflush(stdout);
+                scanf("%d", &search_code);
+                for (int i = 0; i < service_count; i++) {
+                    if (codes[i] == search_code) {
+                        printf("Service Found: %s\n", services[i]);
+                        is_found = 1;
+                        break;
+                    }
+                }
+                if (!is_found) {
+                    printf("Service Unavailable\n");
+                }
+                break;
+            }
+            case 5:
+                printf("Exiting. Thank you for using RoboDesk!\n");
+                break;
+            default:
+                printf("Invalid Choice. Please try again.\n");
+        } 
+        printf("\n");
+    } while (choice != 5);
+
+    return 0;
+}
