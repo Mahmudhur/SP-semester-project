@@ -1,0 +1,26 @@
+#include<stdio.h>
+int main(){
+    int m=8, n=8;
+    int a = m + 4, b = n + 2;
+    float total_bill,finalpay,disc_amount;
+    total_bill = (a * 180) + (b * 220);
+    float discount = 0.00;
+
+    if (total_bill > 2500)  
+    discount = 18.00;
+    else if (total_bill >= 1200 && total_bill <= 2500) 
+    discount = 12.00;
+    else 
+    discount = 6.00;
+
+    disc_amount = total_bill * (discount/100);
+    finalpay = total_bill - disc_amount;
+    printf("MediBot Smart Health Kit Billing : \n");
+    printf("Digital thermometer strips: %d\n",a);
+    printf("Glucose test Strip packs: %d\n",b);
+    printf("Total bill: %.2f tk \n",total_bill);
+    printf("You got %.0f%% Discount!\n",discount);
+    printf("Discount Amount: %.2ftk \n",disc_amount);
+    printf("Final payable amount: %.2ftk\n",finalpay);
+return 0;
+}
